@@ -11,3 +11,9 @@ cilium:
         targetRevision: '1.16.3'
     destination:
       server: https://kubernetes.default.svc
+rook:
+  spec:
+    sources:
+        targetRevision: 'v1.15.4'
+    destination:
+      server: https://kubernetes.default.svc      

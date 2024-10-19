@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  project: bootstrap
+  sources:
+    - repoURL: https://charts.rook.io/release
+      chart: rook-ceph
+      targetRevision: {{ .Values.rook.spec.sources.targetRevision }}
+      helm:
+        valueFiles:
+        - $values/rook/talos-values.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-helm.git'
+      targetRevision: main
+      ref: values      
+  destination:
+    server: {{ .Values.rook.spec.destination.server }}
+    namespace: rook-ceph
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
