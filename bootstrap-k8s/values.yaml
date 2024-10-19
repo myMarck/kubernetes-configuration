@@ -1,0 +1,13 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+source:
+  repoURL: https://github.com/myMarck/kubernetes-helm
+  targetRevision: main
+
+cilium:
+  spec:
+    sources:
+        targetRevision: '1.16.3'
+    destination:
+      server: https://kubernetes.default.svc
