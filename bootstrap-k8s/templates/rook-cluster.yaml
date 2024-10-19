@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rook-cluster
+  name: rook-ceph-cluster
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "21"
@@ -9,11 +9,11 @@ spec:
   project: bootstrap
   sources:
     - repoURL: https://charts.rook.io/release
-      chart: rook-cluster
+      chart: rook-ceph-cluster
       targetRevision: {{ .Values.rook.spec.sources.targetRevision }}
       helm:
         valueFiles:
-        - $values/rook/cluster-values.yaml
+        - $values/rook/ceph-cluster-values.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-helm.git'
       targetRevision: main
       ref: values      
