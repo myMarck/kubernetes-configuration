@@ -1,1 +1,16 @@
 ---
+configOverride: |
+  [global]
+  mon_allow_pool_delete = true
+  mon_warn_on_pool_no_redundancy: "false"
+  osd_pool_default_size = 1
+  osd_pool_default_min_size = 1
+
+cephClusterSpec:
+  dataDirHostPath: /var/lib/rook
+  mon:
+    count: 1
+    allowMultiplePerNode: true
+  mgr:
+    count: 1
+    allowMultiplePerNode: true
