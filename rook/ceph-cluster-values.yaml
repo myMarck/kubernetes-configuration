@@ -33,3 +33,9 @@ cephClusterSpec:
       requests:
         cpu: "1000m"
         memory: "1Gi"
+  storage:
+    useAllNodes: true
+    useAllDevices: true
+    config:
+      databaseSizeMB: "1024"
+      osdsPerDevice: "1"
