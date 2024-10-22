@@ -14,7 +14,7 @@ cilium:
 rook:
   spec:
     sources:
-        targetRevision: 'v1.15.4'
+        targetRevision: '1.15.4'
     destination:
       server: https://kubernetes.default.svc
 certManager:
