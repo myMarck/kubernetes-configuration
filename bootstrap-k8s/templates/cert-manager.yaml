@@ -20,4 +20,7 @@ spec:
       ref: values      
   destination:
     server: {{ .Values.certManager.spec.destination.server }}
-    namespace: kube-system
+    namespace: cert-manager
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -20,6 +20,6 @@ rook:
 certManager:
   spec:
     sources:
-        targetRevision: 'v1.16.1'
+        targetRevision: '1.16.1'
     destination:
       server: https://kubernetes.default.svc     
