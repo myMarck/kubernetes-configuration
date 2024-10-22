@@ -16,4 +16,10 @@ rook:
     sources:
         targetRevision: 'v1.15.4'
     destination:
-      server: https://kubernetes.default.svc      
+      server: https://kubernetes.default.svc
+certManager:
+  spec:
+    sources:
+        targetRevision: 'v1.16.1'
+    destination:
+      server: https://kubernetes.default.svc     
