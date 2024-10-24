@@ -22,4 +22,10 @@ certManager:
     sources:
         targetRevision: '1.16.1'
     destination:
-      server: https://kubernetes.default.svc     
+      server: https://kubernetes.default.svc
+sealedSecrets:
+  spec:
+    sources:
+        targetRevision: '2.16.1'
+    destination:
+      server: https://kubernetes.default.svc
