@@ -18,7 +18,7 @@ spec:
   sources:
     - repoURL: https://helm.cilium.io
       chart: cilium
-      targetRevision: {{ .Values.cilium.spec.sources.targetRevision }}
+      targetRevision: '1.16.3'
       helm:
         releaseName: cilium
         valueFiles:
@@ -27,5 +27,5 @@ spec:
       targetRevision: main
       ref: values      
   destination:
-    server: {{ .Values.cilium.spec.destination.server }}
+    server: https://kubernetes.default.svc
     namespace: kube-system

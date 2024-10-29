@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: https://charts.rook.io/release
       chart: rook-ceph-cluster
-      targetRevision: {{ .Values.rook.spec.sources.targetRevision }}
+      targetRevision: '1.15.4'
       helm:
         valueFiles:
         - $values/rook/ceph-cluster-values.yaml
@@ -18,7 +18,7 @@ spec:
       targetRevision: main
       ref: values      
   destination:
-    server: {{ .Values.rook.spec.destination.server }}
+    server: https://kubernetes.default.svc
     namespace: rook-ceph
   syncPolicy:
     syncOptions:
