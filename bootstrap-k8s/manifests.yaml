@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  name: applicationset-bootstrap-manifests
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - server: https://kubernetes.default.svc
+        project: bootstrap
+        sourcePath: manifests/bootstrap
+        repoURL: https://github.com/myMarck/kubernetes-helm.git
+  template:
+    metadata:
+      name: manifests-{{ project }}
+      namespace: argocd
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        namespace: argocd
+        server: '{{ server }}'
+      project: '{{ project}}'
+      source:
+        directory:
+          jsonnet: {}
+          recurse: true
+        path: '{{ sourcePath }}'
+        repoURL: '{{ repoURL}}'
+        targetRevision: main
