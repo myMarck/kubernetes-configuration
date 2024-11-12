@@ -9,7 +9,6 @@ spec:
   project: bootstrap-argocd
   source:
     directory:
-      include: '*.yaml'
       recurse: true
     repoURL: https://github.com/myMarck/kubernetes-helm.git
     path: argocd/apps
