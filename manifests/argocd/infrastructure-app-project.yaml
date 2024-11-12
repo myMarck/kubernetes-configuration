@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: argocd
+  name: infrastructure
 spec:
-  description: Applications that are part of configuration of Argo CD.
+  description: Applications that are part of configuration of all infrasture applications.
   sourceRepos:
   - https://github.com/myMarck/kubernetes-helm.git
-  - https://helm.cilium.io
+  - https://bitnami-labs.github.io/sealed-secrets
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
