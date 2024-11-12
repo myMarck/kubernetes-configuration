@@ -10,7 +10,7 @@ spec:
   - list:
       elements:
       - server: https://kubernetes.default.svc
-        project: argo-cd
+        project: bootstrap-argocd
         sourcePath: manifests/argocd
         repoURL: https://github.com/myMarck/kubernetes-helm.git
   template:
