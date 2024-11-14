@@ -10,7 +10,7 @@ spec:
   - https://github.com/myMarck/kubernetes-helm.git
   - https://helm.cilium.io
   destinations:
-  - namespace: argocd
+  - namespace: kube-system
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
