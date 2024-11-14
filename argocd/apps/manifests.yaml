@@ -15,4 +15,4 @@ spec:
       recurse: true
     path: manifests/argocd
     repoURL: https://github.com/myMarck/kubernetes-helm.git
-    targetRevision: main
+    targetRevision: HEAD
