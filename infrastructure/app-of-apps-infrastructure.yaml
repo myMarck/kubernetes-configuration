@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps-infrastructure
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "25"
+spec:
+  project: infrastructure
+  source:
+    directory:
+      recurse: true
+    repoURL: https://github.com/myMarck/kubernetes-helm.git
+    path: infrastructure/apps
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
