@@ -1,3 +1,7 @@
 ---
+ingressShim:
+  defaultIssuerName: "zerossl-production"
+  defaultIssuerKind: "ClusterIssuer"
+
 crds:
   enabled: true
