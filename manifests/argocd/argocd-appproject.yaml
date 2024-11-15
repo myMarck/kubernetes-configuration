@@ -9,11 +9,8 @@ spec:
   sourceRepos:
   - https://github.com/myMarck/kubernetes-helm.git
   - https://bitnami-labs.github.io/sealed-secrets
-  - https://charts.jetstack.io
   destinations:
   - namespace: argocd
-    server: https://kubernetes.default.svc
-  - namespace: cert-manager
     server: https://kubernetes.default.svc
   - namespace: kube-system
     server: https://kubernetes.default.svc
