@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: rook-ceph-cluster
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "31"
 spec:
   project: bootstrap
   sources:
@@ -14,7 +12,7 @@ spec:
       helm:
         valueFiles:
         - $values/rook/ceph-cluster-values.yaml
-    - repoURL: 'https://github.com/myMarck/kubernetes-helm.git'
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: main
       ref: values      
   destination:

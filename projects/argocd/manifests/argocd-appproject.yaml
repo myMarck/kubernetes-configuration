@@ -2,12 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "10"
 spec:
   description: Applications that are part of configuration of Argo CD.
   sourceRepos:
-  - https://github.com/myMarck/kubernetes-helm.git
+  - https://github.com/myMarck/kubernetes-configuration.git
   - https://bitnami-labs.github.io/sealed-secrets
   destinations:
   - namespace: argocd

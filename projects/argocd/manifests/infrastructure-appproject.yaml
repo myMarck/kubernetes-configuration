@@ -2,12 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: infrastructure
-  annotations:
-    argocd.argoproj.io/sync-wave: "10"
 spec:
   description: Applications that are part of configuration of all infrasture applications.
   sourceRepos:
-  - https://github.com/myMarck/kubernetes-helm.git
+  - https://github.com/myMarck/kubernetes-configuration.git
   - https://charts.jetstack.io
   - https://helm.cilium.io
   destinations:

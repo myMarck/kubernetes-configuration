@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: cilium
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "25"
 spec:
   project: infrastructure
   ignoreDifferences:
@@ -22,8 +20,8 @@ spec:
       helm:
         releaseName: cilium
         valueFiles:
-        - $values/cilium/talos-values.yaml
-    - repoURL: 'https://github.com/myMarck/kubernetes-helm.git'
+        - $values/helm-values/cilium.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: main
       ref: values      
   destination:

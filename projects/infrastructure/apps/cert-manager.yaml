@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: cert-manager
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "20"
 spec:
   project: infrastructure
   sources:
@@ -14,13 +12,10 @@ spec:
       helm:
         releaseName: cert-manager
         valueFiles:
-        - $values/cert-manager/values.yaml
-    - repoURL: 'https://github.com/myMarck/kubernetes-helm.git'
+        - $values/helm-values/cert-manager.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
       ref: values      
-    - repoURL: https://github.com/myMarck/kubernetes-helm.git
-      path: manifests/cert-manager
-      targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
