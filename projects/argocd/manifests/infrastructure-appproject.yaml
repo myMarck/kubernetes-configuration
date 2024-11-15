@@ -9,6 +9,8 @@ spec:
   - https://charts.jetstack.io
   - https://helm.cilium.io
   destinations:
+  - namespace: argocd
+    server: https://kubernetes.default.svc
   - namespace: kube-system
     server: https://kubernetes.default.svc
   - namespace: cert-manager
