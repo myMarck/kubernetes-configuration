@@ -9,6 +9,7 @@ spec:
   - https://charts.jetstack.io
   - https://helm.cilium.io
   - https://charts.rook.io/release
+  - https://prometheus-community.github.io/helm-charts
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
@@ -19,6 +20,8 @@ spec:
   - namespace: istio-system
     server: https://kubernetes.default.svc
   - namespace: rook-ceph
+    server: https://kubernetes.default.svc
+  - namespace: monitoring
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
