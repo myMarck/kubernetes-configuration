@@ -8,6 +8,7 @@ spec:
   - https://github.com/myMarck/kubernetes-configuration.git
   - https://charts.jetstack.io
   - https://helm.cilium.io
+  - https://charts.rook.io/release
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
