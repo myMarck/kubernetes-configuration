@@ -11,9 +11,9 @@ spec:
       targetRevision: '1.15.5'
       helm:
         valueFiles:
-        - $values/rook/ceph-values.yaml
+        - $values/helm-values/ceph.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
-      targetRevision: main
+      targetRevision: HEAD
       ref: values      
   destination:
     server: https://kubernetes.default.svc
