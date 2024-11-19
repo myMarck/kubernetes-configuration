@@ -7,10 +7,9 @@ spec:
   project: infrastructure
   sources:
     - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: prometheus-community
+      chart: kube-prometheus-stack
       targetRevision: '66.2.1'
       helm:
-        releaseName: kube-prometheus-stack
         valueFiles:
         - $values/helm-values/kube-prometheus-stack.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
