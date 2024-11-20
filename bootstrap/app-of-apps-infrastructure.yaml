@@ -9,7 +9,7 @@ spec:
   project: infrastructure
   source:
     repoURL: https://github.com/myMarck/kubernetes-configuration.git
-    path: projects/infrastructure
+    path: projects/infrastructure/apps
     directory:
       recurse: true
       include: '*.yaml'
