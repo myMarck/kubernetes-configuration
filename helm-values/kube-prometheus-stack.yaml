@@ -6,6 +6,6 @@ grafana:
       - secretName: grafana-tls
         hosts:
           - grafana.odumsborg.dk
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
