@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secrets
+  name: argocd
   namespace: argocd
 spec:
   project: argocd
@@ -14,7 +14,7 @@ spec:
         - $values/helm-values/argo-cd.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
-      ref: values  
+      ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
       path: projects/argocd/manifests/argocd
       directory:
