@@ -2,6 +2,8 @@
 grafana:
   ingress:
     enabled: true
+    hosts:
+      - grafana.odumsborg.dk
     tls:
       - secretName: grafana-tls
         hosts:
