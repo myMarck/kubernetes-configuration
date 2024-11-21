@@ -13,6 +13,7 @@ spec:
   - https://kubernetes.github.io/ingress-nginx
   - https://metallb.github.io/metallb
   - https://argoproj.github.io/argo-helm
+  - https://bitnami-labs.github.io/sealed-secrets
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
