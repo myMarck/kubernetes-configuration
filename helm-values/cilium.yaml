@@ -34,3 +34,10 @@ prometheus:
   enabled: true
   serviceMonitor:
     enabled: true
+operator:
+  prometheus:
+    enabled: true
+hubble:
+  enabled: true
+  metrics:
+    enabled: true
