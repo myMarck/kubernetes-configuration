@@ -12,3 +12,8 @@ grafana:
       kubernetes.io/ingress.class: nginx
       kubernetes.io/tls-acme: "true"
       kubernetes.io/ingress.allow-http: "false"
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchLabels:
+        monitoring.autodiscover: enabled
