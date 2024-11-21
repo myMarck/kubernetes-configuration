@@ -2,3 +2,9 @@
 controller:
   extraArgs:
     enable-ssl-passthrough: ""
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: false
+      additionalLabels:
+        release: kube-prometheus-stack

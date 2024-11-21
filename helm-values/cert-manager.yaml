@@ -2,6 +2,10 @@
 ingressShim:
   defaultIssuerName: "zerossl-production"
   defaultIssuerKind: "ClusterIssuer"
-
+prometheus:
+  servicemonitor:
+    enabled: true
+    labels:
+      release: kube-prometheus-stack
 crds:
   enabled: true
