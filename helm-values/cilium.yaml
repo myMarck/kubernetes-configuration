@@ -40,4 +40,4 @@ operator:
 hubble:
   enabled: true
   metrics:
-    enabled: true
+    enabled: "{dns:query;ignoreAAAA,drop,tcp,flow,icmp,http}"
