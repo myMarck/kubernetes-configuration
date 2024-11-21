@@ -4,9 +4,9 @@ prometheus:
   serviceAccount: prometheus-k8s
   serviceMonitor:
     enabled: true
-  controller:
-    additionalLabels:
-      release: kube-prometheus-stack
-  speaker:
-    additionalLabels:
-      release: kube-prometheus-stack
+    controller:
+      additionalLabels:
+        release: kube-prometheus-stack
+    speaker:
+      additionalLabels:
+        release: kube-prometheus-stack
