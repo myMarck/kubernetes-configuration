@@ -5,6 +5,11 @@ metadata:
   namespace: argocd
 spec:
   project: infrastructure
+  ignoreDifferences:
+    - group: apiextensions.k8s.io
+      jsonPointers:
+        - /spec/conversion/webhook/clientConfig/caBundle
+      kind: CustomResourceDefinition
   sources:
     - repoURL: https://metallb.github.io/metallb
       chart: metallb
