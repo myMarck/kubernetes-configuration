@@ -14,6 +14,6 @@ grafana:
       kubernetes.io/ingress.allow-http: "false"
 prometheus:
   prometheusSpec:
-    serviceMonitorSelector:
-      matchLabels:
-        monitoring.autodiscover: enabled
+    serviceMonitorSelector: {}
+    ruleSelector: {}
+    podMonitorSelector: {}
