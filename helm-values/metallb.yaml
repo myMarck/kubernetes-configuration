@@ -1,1 +1,6 @@
 ---
+prometheus:
+  podMonitor:
+    enabled: true
+  serviceMonitor:
+    enabled: true
