@@ -7,7 +7,7 @@ spec:
   project: infrastructure
   sources:
     - repoURL: https://argoproj.github.io/argo-helm
-      chart: argocd/argo-cd
+      chart: argo-cd
       targetRevision: '7.7.3'
       helm:
         valueFiles:
