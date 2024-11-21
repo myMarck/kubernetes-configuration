@@ -34,9 +34,16 @@ prometheus:
   enabled: true
   serviceMonitor:
     enabled: true
+    labels:
+      release: kube-prometheus-stack
 operator:
   prometheus:
     enabled: true
+    serviceMonitor:
+      enabled: true
+      labels:
+        release: kube-prometheus-stack
+
 hubble:
   enabled: true
   metrics:
@@ -47,3 +54,7 @@ hubble:
       - flow
       - icmp
       - http
+    serviceMonitor:
+      enabled: true
+      labels:
+        release: kube-prometheus-stack
