@@ -1,5 +1,6 @@
 ---
 prometheus:
+  serviceAccount: prometheus-k8s
   podMonitor:
     enabled: true
   serviceMonitor:
