@@ -30,3 +30,6 @@ cni:
   exclusive: false
 socketLB:
   hostNamespaceOnly: true
+prometheus:
+  serviceMonitor:
+    enabled: true
