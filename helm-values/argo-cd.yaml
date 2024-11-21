@@ -13,3 +13,37 @@ server:
       kubernetes.io/tls-acme: "true"
       kubernetes.io/ingress.allow-http: "false"
     tls: true
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: kube-prometheus-stack
+controller:
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: kube-prometheus-stack
+repoServer:
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: kube-prometheus-stack
+applicationSet:
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: kube-prometheus-stack
+notifications:
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: kube-prometheus-stack
