@@ -4,7 +4,7 @@ metadata:
   name: argocd
   namespace: argocd
 spec:
-  project: argocd
+  project: infrastructure
   sources:
     - repoURL: https://argoproj.github.io/argo-helm
       chart: argocd/argo-cd
