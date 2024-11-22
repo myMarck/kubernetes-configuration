@@ -5,6 +5,11 @@ metadata:
   namespace: argocd
 spec:
   project: infrastructure
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jqPathExpressions:
+        - '.spec.template.spec.containers[].env[] | select(.name == "GOMEMLIMIT").valueFrom.resourceFieldRef.divisor'
   sources:
     - repoURL: https://istio-release.storage.googleapis.com/charts
       chart: istiod
