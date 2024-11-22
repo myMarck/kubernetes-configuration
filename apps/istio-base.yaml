@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-base
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://istio-release.storage.googleapis.com/charts
+      chart: base
+      targetRevision: '1.24.0'
+      helm:
+        valueFiles:
+        - $values/helm-values/istio-base.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values      
+    - repoURL: https://github.com/myMarck/kubernetes-configuration.git
+      path: manifests/istio-base
+      directory:
+        include: '*.yaml'
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
