@@ -5,6 +5,11 @@ metadata:
   namespace: argocd
 spec:
   project: infrastructure
+  ignoreDifferences:
+    - group: apps
+      kind: DaemonSet
+      jqPathExpressions:
+        - '.metadata.annotations["deprecated.daemonset.template.generation"]'
   sources:
     - repoURL: https://istio-release.storage.googleapis.com/charts
       chart: ztunnel
