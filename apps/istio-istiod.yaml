@@ -10,6 +10,10 @@ spec:
       kind: Deployment
       jqPathExpressions:
         - '.spec.template.spec.containers[].env[] | select(.name == "GOMEMLIMIT").valueFrom.resourceFieldRef.divisor'
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      jqPathExpressions:
+        - '.webhooks[].failurePolicy'
   sources:
     - repoURL: https://istio-release.storage.googleapis.com/charts
       chart: istiod
