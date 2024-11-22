@@ -5,6 +5,11 @@ metadata:
   namespace: argocd
 spec:
   project: infrastructure
+  ignoreDifferences:
+    - group: apps
+      kind: DaemonSet
+      jqPathExpressions:
+        - '.spec.template.spec.containers[].env[] | select(.name == "GOMEMLIMIT" or .name == "GOMAXPROCS").valueFrom.resourceFieldRef.divisor'
   sources:
     - repoURL: https://istio-release.storage.googleapis.com/charts
       chart: cni
