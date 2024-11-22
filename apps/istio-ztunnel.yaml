@@ -9,7 +9,7 @@ spec:
     - group: apps
       kind: DaemonSet
       jqPathExpressions:
-        - '.metadata.annotations["deprecated.daemonset.template.generation"]'
+        - '.metadata.annotations'
   sources:
     - repoURL: https://istio-release.storage.googleapis.com/charts
       chart: ztunnel
