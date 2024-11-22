@@ -16,7 +16,7 @@ spec:
       targetRevision: HEAD
       ref: values      
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
-      path: manifests/rook
+      path: manifests/ceph
       directory:
         include: '*.yaml'
       targetRevision: HEAD
