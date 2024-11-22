@@ -5,6 +5,12 @@ metadata:
   namespace: argocd
 spec:
   project: infrastructure
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: istiod-default-validator
+      jqPathExpressions:
+        - '.webhooks[].failurePolicy'
   sources:
     - repoURL: https://istio-release.storage.googleapis.com/charts
       chart: base
