@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-gateway
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://istio-release.storage.googleapis.com/charts
+      chart: gateway
+      targetRevision: '1.24.0'
+      helm:
+        valueFiles:
+        - $values/helm-values/istio-gateway.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values      
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
