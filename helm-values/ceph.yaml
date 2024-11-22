@@ -9,6 +9,7 @@ resources:
 monitoring:
   enabled: true
 csi:
+  enableGrpcMetrics: true
   serviceMonitor:
     enabled: false
     labels:
