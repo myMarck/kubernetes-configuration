@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: istio-gateway
   namespace: argocd
+  labels:
+    argocd.argoproj.io/istio: "true"
 spec:
   project: infrastructure
   sources:
