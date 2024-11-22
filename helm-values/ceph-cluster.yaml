@@ -77,3 +77,7 @@ cephFileSystems:
         csi.storage.k8s.io/fstype: ext4
 monitoring:
   enabled: true
+  createPrometheusRules: true
+  prometheusRule:
+    labels:
+      release: kube-prometheus-stack
