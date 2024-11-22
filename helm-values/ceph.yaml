@@ -6,3 +6,10 @@ resources:
   requests:
     cpu: 200m
     memory: 128Mi
+monitoring:
+  enabled: true
+csi:
+  serviceMonitor:
+    enabled: true
+    labels:
+      release: kube-prometheus-stack
