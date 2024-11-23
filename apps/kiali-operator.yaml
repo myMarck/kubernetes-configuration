@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kiali-operator
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/istio: "true"
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://kiali.org/helm-charts
+      chart: kiali-operator
+      targetRevision: '2.1.0'
+      helm:
+        valueFiles:
+        - $values/helm-values/kiali-operator.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values      
+    - repoURL: https://github.com/myMarck/kubernetes-configuration.git
+      path: manifests/kiali-operator
+      directory:
+        include: '*.yaml'
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kiali-operator
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true

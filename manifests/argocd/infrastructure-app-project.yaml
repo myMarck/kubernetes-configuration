@@ -17,6 +17,7 @@ spec:
   - https://argoproj.github.io/argo-helm
   - https://bitnami-labs.github.io/sealed-secrets
   - https://istio-release.storage.googleapis.com/charts
+  - https://kiali.org/helm-charts
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
@@ -33,6 +34,8 @@ spec:
   - namespace: ingress-nginx
     server: https://kubernetes.default.svc
   - namespace: metallb-system
+    server: https://kubernetes.default.svc
+  - namespace: kiali-operator
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
