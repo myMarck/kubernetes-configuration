@@ -12,8 +12,9 @@ allInOne:
       kubernetes.io/ingress.class: nginx
       kubernetes.io/tls-acme: "true"
     tls:
-      hosts:
-        - jaeger.odumsborg.dk
+      - secretName: jaeger-tls
+        hosts:
+          - jaeger.odumsborg.dk
 
 storage:
   type: memory
