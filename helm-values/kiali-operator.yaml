@@ -13,3 +13,5 @@ cr:
           - "kiali.odumsborg.dk"
         tls:
           enabled: false
+    server:
+      web_fqdn: "kiali.odumsborg.dk"
