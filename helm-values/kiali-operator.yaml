@@ -22,6 +22,7 @@ cr:
         internal_url: "http://kube-prometheus-stack-grafana.monitoring"
         external_url: "https://grafana.odumsborg.dk"
         auth:
+          type: "basic"
           username: "admin"
           password: "prom-operator"
       prometheus:
