@@ -18,7 +18,9 @@ cr:
       web_fqdn: "kiali.odumsborg.dk"
     external_services:
       grafana:
-        url: "http://grafana.odumsborg.dk"
+        enabled: true
+        internal_url: "http://kube-prometheus-stack-grafana.monitoring"
+        external_url: "https://grafana.odumsborg.dk"
       # jaeger:
       #   url: "http://jaeger.odumsborg.dk"
       # prometheus:
