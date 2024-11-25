@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jaeger
+  name: grafana-tempo
   namespace: argocd
 spec:
   project: infrastructure
   sources:
-    - repoURL: https://jaegertracing.github.io/helm-charts
-      chart: jaeger
-      targetRevision: '3.3.2'
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: tempo
+      targetRevision: '1.14.0'
       helm:
         valueFiles:
-        - $values/helm-values/jaeger.yaml
+        - $values/helm-values/grafana-tempo.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
       ref: values      
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
-      path: manifests/jaeger
+      path: manifests/grafana-tempo
       directory:
         include: '*.yaml'
       targetRevision: HEAD
