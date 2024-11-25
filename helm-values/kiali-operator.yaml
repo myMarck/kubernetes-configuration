@@ -5,11 +5,11 @@ cr:
   spec:
     auth:
       strategy: "anonymous"
-  deployment:
-    ingress:
-      class_name: "nginx"
-      enabled: true
-      hosts:
-        - "kiali.odumsborg.dk"
-      tls:
-        enabled: false
+    deployment:
+      ingress:
+        class_name: "nginx"
+        enabled: true
+        hosts:
+          - "kiali.odumsborg.dk"
+        tls:
+          enabled: false
