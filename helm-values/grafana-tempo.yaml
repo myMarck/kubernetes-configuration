@@ -13,3 +13,7 @@ tempoQuery:
       - secretName: tempo-tls
         hosts:
           - tempo.odumsborg.dk
+serviceMonitor:
+  enabled: true
+  additionalLabels:
+    release: kube-prometheus-stack
