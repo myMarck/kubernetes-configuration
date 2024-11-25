@@ -1,18 +1,4 @@
 ---
-tempoQuery:
-  ingress:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: nginx
-      kubernetes.io/tls-acme: "true"
-    path: /
-    pathType: Prefix
-    hosts:
-      - tempo.odumsborg.dk
-    tls:
-      - secretName: tempo-tls
-        hosts:
-          - tempo.odumsborg.dk
 serviceMonitor:
   enabled: true
   additionalLabels:
