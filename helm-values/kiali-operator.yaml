@@ -21,6 +21,9 @@ cr:
         enabled: true
         internal_url: "http://kube-prometheus-stack-grafana.monitoring"
         external_url: "https://grafana.odumsborg.dk"
+        auth:
+          username: "admin"
+          password: "prom-operator"
       # jaeger:
       #   url: "http://jaeger.odumsborg.dk"
       # prometheus:
