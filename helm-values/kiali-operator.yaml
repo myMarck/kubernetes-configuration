@@ -14,4 +14,12 @@ cr:
         tls:
           enabled: false
     server:
+      web_root: "/"
       web_fqdn: "kiali.odumsborg.dk"
+    external_services:
+      grafana:
+        url: "http://grafana.odumsborg.dk"
+      # jaeger:
+      #   url: "http://jaeger.odumsborg.dk"
+      # prometheus:
+      #   url: "http://prometheus.odumsborg.dk"
