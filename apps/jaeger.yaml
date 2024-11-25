@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jaeger
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://jaegertracing.github.io/helm-charts
+      chart: jaeger
+      targetRevision: '3.3.2'
+      helm:
+        valueFiles:
+        - $values/helm-values/jaeger.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values      
+    - repoURL: https://github.com/myMarck/kubernetes-configuration.git
+      path: manifests/jaeger
+      directory:
+        include: '*.yaml'
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: observability
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
