@@ -4,6 +4,10 @@ configOverride: |
   mon_allow_pool_delete = true
   osd_pool_default_size = 1
   osd_pool_default_min_size = 1
+  mon_warn_on_pool_no_redundancy: "false"
+  bdev_flock_retry: "20"
+  bluefs_buffered_io: "false"
+  mon_data_avail_warn: "10"
 monitoring:
   enabled: true
   createPrometheusRules: true
@@ -43,8 +47,64 @@ cephClusterSpec:
         cpu: "100m"
         memory: "256Mi"
   storage:
-    useAllNodes: true
-    useAllDevices: true
+    storageClassDeviceSets:
+      - name: set1
+        count: 3
+        portable: false
+        tuneDeviceClass: true
+        tuneFastDeviceClass: false
+        encrypted: false
+        placement:
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: kubernetes.io/hostname
+              whenUnsatisfiable: ScheduleAnyway
+              labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - rook-ceph-osd
+                      - rook-ceph-osd-prepare
+        preparePlacement:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 100
+                podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                      - key: app
+                        operator: In
+                        values:
+                          - rook-ceph-osd
+                      - key: app
+                        operator: In
+                        values:
+                          - rook-ceph-osd-prepare
+                  topologyKey: kubernetes.io/hostname
+        resources:
+          limits:
+            memory: "2Gi"
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+        volumeClaimTemplates:
+          - metadata:
+              name: data
+              # if you are looking at giving your OSD a different CRUSH device class than the one detected by Ceph
+              # annotations:
+              #   crushDeviceClass: hybrid
+            spec:
+              resources:
+                requests:
+                  storage: 100Gi
+              # IMPORTANT: Change the storage class depending on your environment
+              storageClassName: local-storage
+              volumeMode: Block
+              accessModes:
+                - ReadWriteOnce
+    # when onlyApplyOSDPlacement is false, will merge both placement.All() and storageClassDeviceSets.Placement
+    onlyApplyOSDPlacement: false
     config:
       databaseSizeMB: "1024"
       osdsPerDevice: "1"
