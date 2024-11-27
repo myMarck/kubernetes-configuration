@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: local0-1
+  name: local2-1
 spec:
   storageClassName: rook-local-storage
   capacity:
