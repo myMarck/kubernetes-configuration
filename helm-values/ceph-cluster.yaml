@@ -1,6 +1,4 @@
 ---
-toolbox:
-  image: quay.io/ceph/ceph:v19.2.0
 monitoring:
   enabled: true
   createPrometheusRules: true

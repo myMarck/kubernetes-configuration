@@ -1,1 +1,10 @@
-# kubernetes-helm
+# Order
+1. argocd
+2. sealed-secrets
+3. kube-prometheus-stack
+4. metallb
+5. ingress-nginx
+6. cert-manager
+7. cilium
+8. rook-ceph
+9. rook-ceph-cluster
