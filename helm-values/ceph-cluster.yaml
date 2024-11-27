@@ -1,12 +1,15 @@
 ---
+toolbox:
+  image: quay.io/ceph/ceph:v19.2.0
 monitoring:
   enabled: true
   createPrometheusRules: true
   prometheusRule:
     labels:
       release: kube-prometheus-stack
-
 cephClusterSpec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v19.2.0
   dataDirHostPath: /var/lib/rook
   mon:
     count: 1
