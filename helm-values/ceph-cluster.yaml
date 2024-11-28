@@ -25,27 +25,27 @@ cephClusterSpec:
     count: 1
     allowMultiplePerNode: true
   resources:
-    mgr:
-      limits:
-        cpu: "500m"
-        memory: "512Mi"
-      requests:
-        cpu: "250m"
-        memory: "256Mi"
-    mon:
-      limits:
-        cpu: "250m"
-        memory: "256Mi"
-      requests:
-        cpu: "100m"
-        memory: "256Mi"
-    osd:
-      limits:
-        cpu: "500m"
-        memory: "512Mi"
-      requests:
-        cpu: "100m"
-        memory: "256Mi"
+    # mgr:
+    #   limits:
+    #     cpu: "500m"
+    #     memory: "512Mi"
+    #   requests:
+    #     cpu: "250m"
+    #     memory: "256Mi"
+    # mon:
+    #   limits:
+    #     cpu: "250m"
+    #     memory: "1024Mi"
+    #   requests:
+    #     cpu: "100m"
+    #     memory: "256Mi"
+    # osd:
+    #   limits:
+    #     cpu: "500m"
+    #     memory: "512Mi"
+    #   requests:
+    #     cpu: "100m"
+    #     memory: "256Mi"
   storage:
     storageClassDeviceSets:
       - name: set1
@@ -82,12 +82,12 @@ cephClusterSpec:
                         values:
                           - rook-ceph-osd-prepare
                   topologyKey: kubernetes.io/hostname
-        resources:
-          limits:
-            memory: "2Gi"
-          requests:
-            cpu: "500m"
-            memory: "1Gi"
+        # resources:
+        #   limits:
+        #     memory: "2Gi"
+        #   requests:
+        #     cpu: "500m"
+        #     memory: "1Gi"
         volumeClaimTemplates:
           - metadata:
               name: data
@@ -144,12 +144,12 @@ cephFileSystems:
       metadataServer:
         activeCount: 1
         activeStandby: true
-        resources:
-          limits:
-            memory: "1Gi"
-          requests:
-            cpu: "1000m"
-            memory: "512Mi"
+        # resources:
+        #   limits:
+        #     memory: "1Gi"
+        #   requests:
+        #     cpu: "1000m"
+        #     memory: "512Mi"
         priorityClassName: system-cluster-critical
     storageClass:
       enabled: true
@@ -186,12 +186,12 @@ cephObjectStores:
       preservePoolsOnDelete: true
       gateway:
         port: 80
-        resources:
-          limits:
-            memory: "1Gi"
-          requests:
-            cpu: "500m"
-            memory: "512Mi"
+        # resources:
+        #   limits:
+        #     memory: "1Gi"
+        #   requests:
+        #     cpu: "500m"
+        #     memory: "512Mi"
         instances: 1
         priorityClassName: system-cluster-critical
     storageClass:
