@@ -204,13 +204,15 @@ cephObjectStores:
       parameters: {}
     ingress:
       # Enable an ingress for the ceph-objectstore
-      enabled: false
-      # annotations: {}
-      # host:
-      #   name: objectstore.example.com
-      #   path: /
-      # tls:
-      # - hosts:
-      #     - objectstore.example.com
-      #   secretName: ceph-objectstore-tls
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+      host:
+        name: objectstore.odumsborg.dk
+        path: /
+      tls:
+      - hosts:
+          - objectstore.odumsborg.dk
+        secretName: ceph-objectstore-tls
       # ingressClassName: nginx
