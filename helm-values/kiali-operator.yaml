@@ -23,7 +23,7 @@ cr:
         external_url: "https://grafana.odumsborg.dk"
         auth:
           type: bearer
-          token: secret:grafana:token-viewer
+          token: secret:grafana-access:token-viewer
       prometheus:
         enabled: true
         url: "http://kube-prometheus-stack-prometheus.monitoring:9090"
