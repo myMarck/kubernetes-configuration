@@ -185,8 +185,6 @@ cephObjectStores:
           codingChunks: 1
       preservePoolsOnDelete: true
       gateway:
-        securePort: 443
-        sslCertificateRef: objectstore-gateway-tls
         port: 80
         # resources:
         #   limits:
@@ -205,16 +203,19 @@ cephObjectStores:
       labels: {}
       parameters: {}
     ingress:
-      # Enable an ingress for the ceph-objectstore
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
-      host:
-        name: objectstore.odumsborg.dk
-        path: /
+      hosts:
+        - host: s3.odumsborg.dk
+          paths:
+            - /
+        - host: '*.s3.odumsborg.dk'
+          paths:
+            - /
       tls:
       - hosts:
-          - objectstore.odumsborg.dk
+          - s3.odumsborg.dk
+          - '*.s3.odumsborg.dk'
         secretName: ceph-objectstore-tls
-      # ingressClassName: nginx
