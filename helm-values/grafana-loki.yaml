@@ -1,1 +1,16 @@
----
+loki:
+  storage:
+    bucketNames:
+      chunks: "grafana-loki"
+      ruler: "grafana-loki"
+      # If you have an admin bucket, include it:
+      # admin: "grafana-loki-admin"
+    type: s3
+    s3:
+      endpoint: "http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80"
+      region: "us-east-1"
+      accessKeyId: SAZIFDUSYTFA6BTCPRS2
+      secretAccessKey: dKfLV7vAOnQIOGiNVR2BgpzlAsqWBATzkpi1ohvp
+      # s3ForcePathStyle: true
+      insecure: true
+      # Additional S3 settings if needed
