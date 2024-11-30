@@ -207,15 +207,10 @@ cephObjectStores:
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
-      hosts:
-        - host: s3.odumsborg.dk
-          paths:
-            - /
-        - host: '*.s3.odumsborg.dk'
-          paths:
-            - /
+      host:
+        name: objectstore.odumsborg.dk
+        path: /
       tls:
       - hosts:
-          - s3.odumsborg.dk
-          - '*.s3.odumsborg.dk'
+          - objectstore.odumsborg.dk
         secretName: ceph-objectstore-tls
