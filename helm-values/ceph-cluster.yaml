@@ -185,6 +185,8 @@ cephObjectStores:
           codingChunks: 1
       preservePoolsOnDelete: true
       gateway:
+        securePort: 443
+        sslCertificateRef: objectstore-gateway-tls
         port: 80
         # resources:
         #   limits:

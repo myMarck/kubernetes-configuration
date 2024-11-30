@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: objectstore-gateway-tls
+  namespace: rook-ceph
+spec:
+  secretName: objectstore-gateway-tls
+  issuerRef:
+    group: cert-manager.io
+    name: zerossl-production
+    kind: ClusterIssuer
+  usages:
+    - digital signature
+    - key encipherment
+  commonName: "*.s3.odumsborg.dk"
+  dnsNames:
+  - "*.s3.odumsborg.dk"
+  - "s3.odumsborg.dk"
