@@ -14,7 +14,12 @@ spec:
         - $values/helm-values/grafana-loki.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
-      ref: values      
+      ref: values
+    - repoURL: https://github.com/myMarck/kubernetes-configuration.git
+      path: manifests/grafana-loki
+      directory:
+        include: '*.yaml'
+      targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: observability

@@ -21,7 +21,7 @@ spec:
         - $values/helm-values/istio-cni.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
-      ref: values      
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system

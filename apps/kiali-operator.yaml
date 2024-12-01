@@ -16,7 +16,7 @@ spec:
         - $values/helm-values/kiali-operator.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
-      ref: values      
+      ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
       path: manifests/kiali-operator
       directory:

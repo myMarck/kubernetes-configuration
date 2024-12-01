@@ -14,7 +14,7 @@ spec:
         - $values/helm-values/ceph.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
-      ref: values      
+      ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
       path: manifests/ceph
       directory:

@@ -19,7 +19,7 @@ spec:
         - $values/helm-values/metallb.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
-      ref: values      
+      ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
       path: manifests/metallb
       directory:

@@ -21,7 +21,7 @@ spec:
         - $values/helm-values/istio-base.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
-      ref: values      
+      ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
       path: manifests/istio-base
       directory:
