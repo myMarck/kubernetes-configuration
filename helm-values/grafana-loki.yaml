@@ -30,10 +30,14 @@ loki:
     type: s3
     s3:
       endpoint: "http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc:80"
-#      region: "us-east-1"
+      region: "us-east-1"
       accessKeyId: "${AWS_ACCESS_KEY_ID}"
       secretAccessKey: "${AWS_SECRET_ACCESS_KEY}"
       insecure: true
+
+sidecar:
+  rules:
+    logLevel: debug
 
 chunksCache:
   enabled: false
