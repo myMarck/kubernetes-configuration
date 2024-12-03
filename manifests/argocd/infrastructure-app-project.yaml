@@ -19,6 +19,7 @@ spec:
   - https://istio-release.storage.googleapis.com/charts
   - https://kiali.org/helm-charts
   - https://grafana.github.io/helm-charts
+  - https://aquasecurity.github.io/helm-charts
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
@@ -39,6 +40,8 @@ spec:
   - namespace: kiali-operator
     server: https://kubernetes.default.svc
   - namespace: observability
+    server: https://kubernetes.default.svc
+  - namespace: trivy-system
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
