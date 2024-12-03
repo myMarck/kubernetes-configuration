@@ -1,29 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: trivy
   namespace: argocd
 spec:
   project: infrastructure
   sources:
     - repoURL: https://charts.jetstack.io
-      chart: cert-manager
-      targetRevision: '1.16.2'
+      chart: trivy-operator
+      targetRevision: '0.25.0'
       helm:
-        releaseName: cert-manager
         valueFiles:
-        - $values/helm-values/cert-manager.yaml
+        - $values/helm-values/trivy.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
       ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
-      path: manifests/cert-manager
+      path: manifests/trivy
       directory:
         include: '*.yaml'
       targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: cert-manager
+    namespace: trivy-system
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
+      - ServerSideApply=true
