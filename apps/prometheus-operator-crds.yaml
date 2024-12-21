@@ -3,11 +3,14 @@ kind: Application
 metadata:
   name: prometheus-operator-crds
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: infrastructure
   sources:
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: prometheus-operator-crds
+      # https://artifacthub.io/packages/helm/prometheus-community/prometheus-operator-crds
       targetRevision: '17.0.2'
       helm:
         valueFiles:
@@ -19,5 +22,6 @@ spec:
     server: https://kubernetes.default.svc
     namespace: observability
   syncPolicy:
+    automated: {}
     syncOptions:
       - ServerSideApply=true

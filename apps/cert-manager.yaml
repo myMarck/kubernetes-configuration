@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: cert-manager
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
 spec:
   project: infrastructure
   sources:
@@ -25,5 +27,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: cert-manager
   syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+      - ServerSideApply=true

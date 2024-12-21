@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: ingress-nginx
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   project: infrastructure
   sources:
@@ -24,5 +26,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
   syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
     syncOptions:
       - ServerSideApply=true
