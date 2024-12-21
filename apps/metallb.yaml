@@ -15,6 +15,7 @@ spec:
   sources:
     - repoURL: https://metallb.github.io/metallb
       chart: metallb
+      # https://artifacthub.io/packages/helm/metallb/metallb
       targetRevision: '0.14.9'
       helm:
         valueFiles:
