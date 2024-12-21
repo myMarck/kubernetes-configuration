@@ -4,6 +4,7 @@ metadata:
   name: infrastructure
   labels:
     argocd.argoproj.io/bootstrap: "true"
+    argocd.argoproj.io/instance: argocd    
 spec:
   description: Applications that are part of configuration of all infrasture applications.
   sourceRepos:
