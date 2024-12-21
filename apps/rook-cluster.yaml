@@ -3,11 +3,14 @@ kind: Application
 metadata:
   name: rook-ceph-cluster
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
 spec:
   project: infrastructure
   sources:
     - repoURL: https://charts.rook.io/release
       chart: rook-ceph-cluster
+      # https://artifacthub.io/packages/helm/rook/rook-ceph-cluster
       targetRevision: '1.16.0'
       helm:
         valueFiles:
@@ -23,3 +26,10 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: rook-ceph
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true

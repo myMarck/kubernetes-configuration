@@ -1,21 +1,27 @@
 # Order
-1. infrastructure
-2. prometheus-operator-crds
-3. sealed-secrets
-4. metallb
-5. ingress-nginx
-6. cert-manager
-7. kube-prometheus-stack
-8. rook-ceph
-9. rook-ceph-cluster
-10. cilium
-11. argocd
-12. istio-base
-13. istio-istiod
-14. istio-cni
-15. istio-ztunnel
-16. istio-gateway
-17. kiali-operator
+### Wave 0 - 4
+* infrastructure
+* prometheus-operator-crds
+* sealed-secrets
+### Wave 5 - 9
+* metallb
+* ingress-nginx
+### Wave 10 - 14
+* cert-manager
+### Wave 15 - 19
+* cilium
+* argocd
+* rook-ceph
+### Wave 20 - 24
+* rook-ceph-cluster
+### Manual order
+1. kube-prometheus-stack
+2. istio-base
+3. istio-istiod
+4. istio-cni
+5. istio-ztunnel
+6. istio-gateway
+7. kiali-operator
 
 # Manuel steps
 https://grafana.com/docs/grafana/latest/administration/service-accounts/#create-a-service-account-in-grafana
