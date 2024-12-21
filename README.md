@@ -1,13 +1,13 @@
 # Order
 1. infrastructure
-2. argocd(AppProject infrastructure)
+2. prometheus-operator-crds
 3. sealed-secrets
-4. kube-prometheus-stack
-5. rook-ceph
-6. rook-ceph-cluster
-7. metallb
-8. ingress-nginx
-9. cert-manager
+4. metallb
+5. ingress-nginx
+6. cert-manager
+7. kube-prometheus-stack
+8. rook-ceph
+9. rook-ceph-cluster
 10. cilium
 11. argocd
 12. istio-base

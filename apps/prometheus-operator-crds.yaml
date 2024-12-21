@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-operator-crds
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: prometheus-operator-crds
+      targetRevision: '17.0.2'
+      helm:
+        valueFiles:
+        - $values/helm-values/prometheus-operator-crds.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: observability
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
