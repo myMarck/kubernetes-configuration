@@ -17,6 +17,18 @@ spec:
       kind: DaemonSet
       jsonPointers:
         - /spec/template/spec/containers/0/volumeMounts/0/readOnly
+    - group: monitoring.coreos.com
+      kind: ServiceMonitor
+      namespace: kube-system
+      name: cilium-agent
+      jsonPointers:
+        - /spec/endpoints/0/relabelings/0/action        
+    - group: monitoring.coreos.com
+      kind: ServiceMonitor
+      namespace: kube-system
+      name: hubble
+      jsonPointers:
+        - /spec/endpoints/0/relabelings/0/action
   sources:
     - repoURL: https://helm.cilium.io
       chart: cilium
