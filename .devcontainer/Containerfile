@@ -1,0 +1,32 @@
+FROM alpine:latest
+
+# https://github.com/helm/helm/releases
+ARG HELM_VERSION="3.16.4"
+# https://dl.k8s.io/release/stable.txt
+ARG KUBECTL_VERSION="1.32.0"
+
+ARG ARCH
+
+RUN case `uname -m` in \
+    x86_64) ARCH=amd64; ;; \
+    armv7l) ARCH=arm; ;; \
+    aarch64) ARCH=arm64; ;; \
+    ppc64le) ARCH=ppc64le; ;; \
+    s390x) ARCH=s390x; ;; \
+    *) echo "un-supported arch, exit ..."; exit 1; ;; \
+    esac && \
+    echo "export ARCH=$ARCH" > /envfile && \
+    cat /envfile
+
+RUN . /envfile && echo $ARCH && \
+    wget -qO- "https://get.helm.sh/helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz" | tar -xvz && \
+    install -o root -g root -m 0755 "linux-${ARCH}/helm" /usr/local/bin/helm && \
+    rm -rf "linux-${ARCH}"
+
+# Install kubectl
+RUN . /envfile && echo $ARCH && \
+    wget -q "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl" && \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+    rm -fr kubectl
+
+RUN apk add --update --no-cache curl ca-certificates bash git
