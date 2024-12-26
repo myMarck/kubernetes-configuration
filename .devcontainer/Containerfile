@@ -97,7 +97,10 @@ RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
     echo "alias kubeseal='kubeseal --controller-namespace kube-system --controller-name sealed-secrets'" > /root/.oh-my-zsh/custom/kubeseal.zsh
 
 RUN mkdir -p /usr/local/share/zsh/site-functions && \
-    kubectl completion zsh > /usr/local/share/zsh/site-functions/_kubectl
+    kubectl completion zsh > /usr/local/share/zsh/site-functions/_kubectl && \
+    helm completion zsh > /usr/local/share/zsh/site-functions/_helm && \
+    cilium completion zsh > /usr/local/share/zsh/site-functions/_cilium && \
+    istioctl completion zsh > /usr/local/share/zsh/site-functions/_istioctl
 
 RUN sed -i 's/^plugins=(git)$/plugins=(git kubectl argocd)/' /root/.zshrc \
     && echo 'fpath=(/usr/local/share/zsh/site-functions $fpath)' >> /root/.zshrc
