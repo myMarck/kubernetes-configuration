@@ -16,6 +16,8 @@ ARG STERN_VERSION="1.31.0"
 ARG ARGOCD_VERSION="2.13.2"
 # https://github.com/bitnami-labs/sealed-secrets/releases
 ARG KUBESEAL_VERSION="0.27.3"
+# https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt
+ARG CILIUM_CLI_VERSION="0.16.22"
 
 ARG ARCH
 ARG ARCH_V2
@@ -32,49 +34,55 @@ RUN case `uname -m` in \
     echo "export ARCH_V2=$ARCH_V2" >> /envfile && \
     cat /envfile
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget -qO- "https://get.helm.sh/helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz" | tar -xvz && \
     install -o root -g root -m 0755 "linux-${ARCH}/helm" /usr/local/bin/helm && \
     rm -rf "linux-${ARCH}"
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget -q "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl" && \
     install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     rm -fr kubectl
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget -q "https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-${ARCH}" && \
     install -m 555 "argocd-linux-${ARCH}" /usr/local/bin/argocd && \
     rm "argocd-linux-${ARCH}"
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget -q "https://github.com/ahmetb/kubectx/releases/download/v${KUBECTX_VERSION}/kubens_v${KUBECTX_VERSION}_linux_${ARCH_V2}.tar.gz" && \
     tar -zxvf "kubens_v${KUBECTX_VERSION}_linux_${ARCH_V2}.tar.gz" kubens && \
     install -o root -g root -m 0755 kubens /usr/local/bin/kubens && \
     rm -fr kubens "kubens_v${KUBECTX_VERSION}_linux_${ARCH_V2}.tar.gz"
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget "https://github.com/istio/istio/releases/download/${ISTIO_VERSION}/istioctl-${ISTIO_VERSION}-linux-${ARCH}.tar.gz" && \
     tar -zxvf "istioctl-${ISTIO_VERSION}-linux-${ARCH}.tar.gz" istioctl && \
     install -o root -g root -m 0755 istioctl /usr/local/bin/istioctl && \
     rm -fr istioctl "istioctl-${ISTIO_VERSION}-linux-${ARCH}.tar.gz"
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget -q "https://github.com/stern/stern/releases/download/v${STERN_VERSION}/stern_${STERN_VERSION}_linux_${ARCH}.tar.gz" && \
     tar -zxvf "stern_${STERN_VERSION}_linux_${ARCH}.tar.gz" stern && \
     install -o root -g root -m 0755 stern /usr/local/bin/stern && \
     rm -fr stern "stern_${STERN_VERSION}_linux_${ARCH}.tar.gz"
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget -q "https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-${ARCH}" && \
     install -m 555 "argocd-linux-${ARCH}" /usr/local/bin/argocd && \
     rm "argocd-linux-${ARCH}"
 
-RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+RUN . /envfile && \
     wget -q "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz" && \
     tar -zxvf "kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz" kubeseal && \
     install -o root -g root -m 0755 kubeseal /usr/local/bin/kubeseal && \
     rm -rf kubeseal "kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz"
+
+RUN . /envfile && \
+    wget -q "https://github.com/cilium/cilium-cli/releases/download/v${CILIUM_CLI_VERSION}/cilium-linux-${ARCH}.tar.gz" && \
+    tar -zxvf "cilium-linux-${ARCH}.tar.gz" cilium && \
+    install -o root -g root -m 0755 cilium /usr/local/bin/cilium && \
+    rm -fr cilium "cilium-linux-${ARCH}.tar.gz"
 
 RUN apk add --update --no-cache curl ca-certificates git jq yq zsh
 
@@ -85,7 +93,8 @@ RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
     -p kubectl \
     -p kubectx \
     -p https://github.com/zsh-users/zsh-autosuggestions \
-    -p https://github.com/zsh-users/zsh-completions
+    -p https://github.com/zsh-users/zsh-completions && \
+    echo "alias kubeseal='kubeseal --controller-namespace kube-system --controller-name sealed-secrets'" > /root/.oh-my-zsh/custom/kubeseal.zsh
 
 RUN mkdir -p /usr/local/share/zsh/site-functions && \
     kubectl completion zsh > /usr/local/share/zsh/site-functions/_kubectl
