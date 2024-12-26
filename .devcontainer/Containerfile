@@ -4,29 +4,92 @@ FROM alpine:latest
 ARG HELM_VERSION="3.16.4"
 # https://dl.k8s.io/release/stable.txt
 ARG KUBECTL_VERSION="1.32.0"
+# https://github.com/argoproj/argo-cd/releases
+ARG ARGOCD_VERSION="2.13.2"
+# https://github.com/ahmetb/kubectx/releases
+ARG KUBECTX_VERSION="0.9.5"
+# https://github.com/istio/istio/releases/
+ARG ISTIO_VERSION="1.24.2"
+# https://github.com/stern/stern/releases
+ARG STERN_VERSION="1.31.0"
+# https://github.com/argoproj/argo-cd/releases
+ARG ARGOCD_VERSION="2.13.2"
+# https://github.com/bitnami-labs/sealed-secrets/releases
+ARG KUBESEAL_VERSION="0.27.3"
 
 ARG ARCH
+ARG ARCH_V2
 
 RUN case `uname -m` in \
-    x86_64) ARCH=amd64; ;; \
-    armv7l) ARCH=arm; ;; \
-    aarch64) ARCH=arm64; ;; \
-    ppc64le) ARCH=ppc64le; ;; \
-    s390x) ARCH=s390x; ;; \
+    x86_64) ARCH=amd64; ARCH_V2=x86_64; ;; \
+    armv7l) ARCH=arm; ARCH_V2=armv7; ;; \
+    aarch64) ARCH=arm64; ARCH_V2=arm64; ;; \
+    ppc64le) ARCH=ppc64le; ARCH_V2=ppc64le; ;; \
+    s390x) ARCH=s390x; ARCH_V2=s390x; ;; \
     *) echo "un-supported arch, exit ..."; exit 1; ;; \
     esac && \
     echo "export ARCH=$ARCH" > /envfile && \
+    echo "export ARCH_V2=$ARCH_V2" >> /envfile && \
     cat /envfile
 
-RUN . /envfile && echo $ARCH && \
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
     wget -qO- "https://get.helm.sh/helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz" | tar -xvz && \
     install -o root -g root -m 0755 "linux-${ARCH}/helm" /usr/local/bin/helm && \
     rm -rf "linux-${ARCH}"
 
-# Install kubectl
-RUN . /envfile && echo $ARCH && \
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
     wget -q "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl" && \
     install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     rm -fr kubectl
 
-RUN apk add --update --no-cache curl ca-certificates bash git
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+    wget -q "https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-${ARCH}" && \
+    install -m 555 "argocd-linux-${ARCH}" /usr/local/bin/argocd && \
+    rm "argocd-linux-${ARCH}"
+
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+    wget -q "https://github.com/ahmetb/kubectx/releases/download/v${KUBECTX_VERSION}/kubens_v${KUBECTX_VERSION}_linux_${ARCH_V2}.tar.gz" && \
+    tar -zxvf "kubens_v${KUBECTX_VERSION}_linux_${ARCH_V2}.tar.gz" kubens && \
+    install -o root -g root -m 0755 kubens /usr/local/bin/kubens && \
+    rm -fr kubens "kubens_v${KUBECTX_VERSION}_linux_${ARCH_V2}.tar.gz"
+
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+    wget "https://github.com/istio/istio/releases/download/${ISTIO_VERSION}/istioctl-${ISTIO_VERSION}-linux-${ARCH}.tar.gz" && \
+    tar -zxvf "istioctl-${ISTIO_VERSION}-linux-${ARCH}.tar.gz" istioctl && \
+    install -o root -g root -m 0755 istioctl /usr/local/bin/istioctl && \
+    rm -fr istioctl "istioctl-${ISTIO_VERSION}-linux-${ARCH}.tar.gz"
+
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+    wget -q "https://github.com/stern/stern/releases/download/v${STERN_VERSION}/stern_${STERN_VERSION}_linux_${ARCH}.tar.gz" && \
+    tar -zxvf "stern_${STERN_VERSION}_linux_${ARCH}.tar.gz" stern && \
+    install -o root -g root -m 0755 stern /usr/local/bin/stern && \
+    rm -fr stern "stern_${STERN_VERSION}_linux_${ARCH}.tar.gz"
+
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+    wget -q "https://github.com/argoproj/argo-cd/releases/download/v${ARGOCD_VERSION}/argocd-linux-${ARCH}" && \
+    install -m 555 "argocd-linux-${ARCH}" /usr/local/bin/argocd && \
+    rm "argocd-linux-${ARCH}"
+
+RUN . /envfile && echo $ARCH && echo $ARCH_V2 && \
+    wget -q "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz" && \
+    tar -zxvf "kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz" kubeseal && \
+    install -o root -g root -m 0755 kubeseal /usr/local/bin/kubeseal && \
+    rm -rf kubeseal "kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz"
+
+RUN apk add --update --no-cache curl ca-certificates git jq yq zsh
+
+RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -- \
+    -t https://github.com/denysdovhan/spaceship-prompt \
+    -a 'SPACESHIP_PROMPT_ADD_NEWLINE="false"' \
+    -a 'SPACESHIP_PROMPT_SEPARATE_LINE="false"' \
+    -p kubectl \
+    -p kubectx \
+    -p https://github.com/zsh-users/zsh-autosuggestions \
+    -p https://github.com/zsh-users/zsh-completions
+
+RUN mkdir -p /usr/local/share/zsh/site-functions && \
+    kubectl completion zsh > /usr/local/share/zsh/site-functions/_kubectl
+
+RUN sed -i 's/^plugins=(git)$/plugins=(git kubectl argocd)/' /root/.zshrc \
+    && echo 'fpath=(/usr/local/share/zsh/site-functions $fpath)' >> /root/.zshrc
+   

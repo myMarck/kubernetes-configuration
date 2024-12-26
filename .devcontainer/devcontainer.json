@@ -1,4 +1,21 @@
 {
     "name": "Kubernetes configuration",
-    "build": { "dockerfile": "Containerfile" }
+    "build": {
+        "dockerfile": "Containerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                }
+            }
+        }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.kube,target=/root/.kube,type=bind"
+    ]
 }
