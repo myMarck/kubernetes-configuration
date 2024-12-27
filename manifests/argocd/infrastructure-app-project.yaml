@@ -44,6 +44,8 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: trivy-system
     server: https://kubernetes.default.svc
+  - namespace: grafana-loki
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
