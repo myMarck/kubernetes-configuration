@@ -1,5 +1,3 @@
 ---
 grafana:
-  enabled: true
-  image:
-    tag: latest  
+  enabled: false
