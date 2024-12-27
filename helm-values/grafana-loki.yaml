@@ -18,6 +18,8 @@ minio:
   enabled: true
 deploymentMode: SingleBinary
 singleBinary:
+  extraEnvFrom:
+    - grafana-loki
   replicas: 1
 backend:
   replicas: 0
