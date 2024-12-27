@@ -19,7 +19,8 @@ minio:
 deploymentMode: SingleBinary
 singleBinary:
   extraEnvFrom:
-    - grafana-loki
+    - secretRef:
+        name: grafana-loki
   replicas: 1
 backend:
   replicas: 0
