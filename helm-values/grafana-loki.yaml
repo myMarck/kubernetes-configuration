@@ -1,6 +1,16 @@
 loki:
   commonConfig:
     replication_factor: 1
+  storage:
+    bucketNames:
+      chunks: "${BUCKET_NAME:}"
+      ruler: "${BUCKET_NAME:}"
+    type: s3
+    s3:
+      endpoint: "${BUCKET_HOST}"
+      secretAccessKey: "${AWS_SECRET_ACCESS_KEY}"
+      accessKeyId: "${AWS_ACCESS_KEY_ID}"
+      insecure: true
   schemaConfig:
     configs:
       - from: "2024-04-01"
@@ -15,11 +25,13 @@ chunksCache:
 resultsCache:
   enabled: false
 minio:
-  enabled: true
+  enabled: false
 deploymentMode: SingleBinary
 singleBinary:
   extraEnvFrom:
     - secretRef:
+        name: grafana-loki
+    - configMapRef:
         name: grafana-loki
   replicas: 1
 backend:
