@@ -2,8 +2,8 @@
 ### Wave 0 - 4
 * infrastructure
 * prometheus-operator-crds
-* sealed-secrets
 ### Wave 5 - 9
+* sealed-secrets
 * metallb
 * ingress-nginx
 ### Wave 10 - 14
@@ -14,8 +14,9 @@
 * rook-ceph
 ### Wave 20 - 24
 * rook-ceph-cluster
+* k8s-monitoring
+
 ### Manual order
-1. kube-prometheus-stack
 2. istio-base
 3. istio-istiod
 4. istio-cni
