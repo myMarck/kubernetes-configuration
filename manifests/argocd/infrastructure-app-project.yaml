@@ -32,7 +32,7 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: rook-ceph
     server: https://kubernetes.default.svc
-  - namespace: monitoring
+  - namespace: grafana-cloud
     server: https://kubernetes.default.svc
   - namespace: ingress-nginx
     server: https://kubernetes.default.svc
@@ -41,8 +41,6 @@ spec:
   - namespace: kiali-operator
     server: https://kubernetes.default.svc
   - namespace: observability
-    server: https://kubernetes.default.svc
-  - namespace: grafana-loki
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
