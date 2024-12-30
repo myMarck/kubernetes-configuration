@@ -1,5 +1,12 @@
 cluster:
   name: pve-cluster
+externalServices:
+  prometheus:
+    host: https://prometheus-prod-39-prod-eu-north-0.grafana.net
+  loki:
+    host: https://logs-prod-025.grafana.net
+  tempo:
+    host: https://tempo-prod-18-prod-eu-north-0.grafana.net:443
 metrics:
   enabled: true
   alloy:
