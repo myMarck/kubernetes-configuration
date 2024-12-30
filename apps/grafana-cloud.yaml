@@ -1,28 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack
+  name: grafana-k8s-monitoring
   namespace: argocd
 spec:
   project: infrastructure
   sources:
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: kube-prometheus-stack
-      targetRevision: '67.4.0'
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: k8s-monitoring
+      targetRevision: '1.6.16'
       helm:
         valueFiles:
-        - $values/helm-values/kube-prometheus-stack.yaml
+        - $values/helm-values/grafana-cloud.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
       ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
-      path: manifests/kube-prometheus-stack
+      path: manifests/grafana-cloud
       directory:
         include: '*.yaml'
       targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: grafana-cloud
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
