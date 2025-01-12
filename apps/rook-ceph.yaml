@@ -11,7 +11,7 @@ spec:
     - repoURL: https://charts.rook.io/release
       chart: rook-ceph
       # https://artifacthub.io/packages/helm/rook/rook-ceph
-      targetRevision: '1.16.0'
+      targetRevision: '1.16.1'
       helm:
         valueFiles:
         - $values/helm-values/ceph.yaml
