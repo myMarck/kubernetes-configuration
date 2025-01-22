@@ -11,7 +11,7 @@ spec:
     - repoURL: https://grafana.github.io/helm-charts
       chart: k8s-monitoring
       # https://github.com/grafana/k8s-monitoring-helm
-      targetRevision: '1.6.18'
+      targetRevision: '1.6.21'
       helm:
         valueFiles:
         - $values/helm-values/grafana-cloud.yaml
