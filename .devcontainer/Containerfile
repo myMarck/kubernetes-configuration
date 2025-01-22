@@ -1,9 +1,9 @@
 FROM alpine:latest
 
 # https://github.com/helm/helm/releases
-ARG HELM_VERSION="3.16.4"
+ARG HELM_VERSION="3.17.0"
 # https://dl.k8s.io/release/stable.txt
-ARG KUBECTL_VERSION="1.32.0"
+ARG KUBECTL_VERSION="1.32.1"
 # https://github.com/argoproj/argo-cd/releases
 ARG ARGOCD_VERSION="2.13.3"
 # https://github.com/ahmetb/kubectx/releases
@@ -11,9 +11,9 @@ ARG KUBECTX_VERSION="0.9.5"
 # https://github.com/istio/istio/releases/
 ARG ISTIO_VERSION="1.24.2"
 # https://github.com/stern/stern/releases
-ARG STERN_VERSION="1.31.0"
+ARG STERN_VERSION="1.32.0"
 # https://github.com/bitnami-labs/sealed-secrets/releases
-ARG KUBESEAL_VERSION="0.27.3"
+ARG KUBESEAL_VERSION="0.28.0"
 # https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt
 ARG CILIUM_CLI_VERSION="0.16.23"
 # https://github.com/kubernetes-sigs/krew/releases
