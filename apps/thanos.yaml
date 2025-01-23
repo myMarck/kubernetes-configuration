@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: thanos
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: thanos
+      # https://artifacthub.io/packages/helm/bitnami/thanos
+      targetRevision: '15.10.2'
+      helm:
+        valueFiles:
+        - $values/helm-values/thanos.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=trues
