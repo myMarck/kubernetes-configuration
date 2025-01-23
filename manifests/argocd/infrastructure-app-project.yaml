@@ -20,6 +20,7 @@ spec:
   - https://istio-release.storage.googleapis.com/charts
   - https://kiali.org/helm-charts
   - https://grafana.github.io/helm-charts
+  - https://charts.bitnami.com/bitnami
   - https://aquasecurity.github.io/helm-charts
   destinations:
   - namespace: argocd
