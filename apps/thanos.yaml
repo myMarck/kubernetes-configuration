@@ -6,7 +6,7 @@ metadata:
 spec:
   project: infrastructure
   sources:
-    - repoURL: charts.bitnami.com/bitnami
+    - repoURL: https://charts.bitnami.com/bitnami
       chart: thanos
       # https://artifacthub.io/packages/helm/bitnami/thanos
       targetRevision: '15.10.3'
