@@ -25,4 +25,4 @@ spec:
     namespace: monitoring
   syncPolicy:
     syncOptions:
-      - ServerSideApply=trues
+      - ServerSideApply=true
