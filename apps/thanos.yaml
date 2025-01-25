@@ -9,7 +9,7 @@ spec:
     - repoURL: charts.bitnami.com/bitnami
       chart: thanos
       # https://artifacthub.io/packages/helm/bitnami/thanos
-      targetRevision: '15.10.2'
+      targetRevision: '15.10.3'
       helm:
         valueFiles:
         - $values/helm-values/thanos.yaml
@@ -21,4 +21,4 @@ spec:
     namespace: monitoring
   syncPolicy:
     syncOptions:
-      - ServerSideApply=trues
+      - ServerSideApply=true
