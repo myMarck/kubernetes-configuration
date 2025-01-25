@@ -21,6 +21,7 @@ spec:
   - https://kiali.org/helm-charts
   - https://grafana.github.io/helm-charts
   - https://charts.bitnami.com/bitnami
+  - oci://registry-1.docker.io/bitnamicharts
   - https://aquasecurity.github.io/helm-charts
   destinations:
   - namespace: argocd
