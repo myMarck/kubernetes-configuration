@@ -9,7 +9,7 @@ ARG ARGOCD_VERSION="2.13.4"
 # https://github.com/ahmetb/kubectx/releases
 ARG KUBECTX_VERSION="0.9.5"
 # https://github.com/istio/istio/releases/
-ARG ISTIO_VERSION="1.24.8"
+ARG ISTIO_VERSION="1.24.2"
 # https://github.com/stern/stern/releases
 ARG STERN_VERSION="1.32.0"
 # https://github.com/bitnami-labs/sealed-secrets/releases
