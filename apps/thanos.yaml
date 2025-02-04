@@ -6,10 +6,10 @@ metadata:
 spec:
   project: infrastructure
   sources:
-    - repoURL: oci://registry-1.docker.io/bitnamicharts
+    - repoURL: https://charts.bitnami.com/bitnami
       chart: thanos
       # https://artifacthub.io/packages/helm/bitnami/thanos
-      targetRevision: '15.10.3'
+      targetRevision: '15.12.0'
       helm:
         valueFiles:
         - $values/helm-values/thanos.yaml
