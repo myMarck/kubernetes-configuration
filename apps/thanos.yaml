@@ -7,6 +7,7 @@ spec:
   project: infrastructure
   sources:
     - repoURL: 'oci://registry-1.docker.io/bitnamicharts'
+      path: ''
       chart: 'thanos'
       # https://artifacthub.io/packages/helm/bitnami/thanos
       targetRevision: '15.12.0'
