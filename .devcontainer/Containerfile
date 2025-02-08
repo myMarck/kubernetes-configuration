@@ -5,7 +5,7 @@ ARG HELM_VERSION="3.17.0"
 # https://dl.k8s.io/release/stable.txt
 ARG KUBECTL_VERSION="1.32.1"
 # https://github.com/argoproj/argo-cd/releases
-ARG ARGOCD_VERSION="2.13.4"
+ARG ARGOCD_VERSION="2.14.2"
 # https://github.com/ahmetb/kubectx/releases
 ARG KUBECTX_VERSION="0.9.5"
 # https://github.com/istio/istio/releases/
