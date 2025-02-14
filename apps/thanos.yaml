@@ -9,7 +9,7 @@ spec:
     - repoURL: registry-1.docker.io/bitnamicharts
       chart: thanos
       # https://artifacthub.io/packages/helm/bitnami/thanos
-      targetRevision: '15.12.2'
+      targetRevision: '15.12.3'
       helm:
         valueFiles:
         - $values/helm-values/thanos.yaml
