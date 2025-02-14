@@ -33,3 +33,5 @@ alertmanager:
 prometheus:
   thanosService:
     enabled: true
+  thanosServiceMonitor:
+    enabled: true
