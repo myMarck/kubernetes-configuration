@@ -23,6 +23,8 @@ cephClusterSpec:
     count: 1
     allowMultiplePerNode: true
   labels:
+    mgr:
+      release: kube-prometheus-stack
     monitoring:
       release: kube-prometheus-stack
     #resources:
