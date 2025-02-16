@@ -2,55 +2,6 @@ apiVersion: v1
 data:
   metallb-dashboard.json: |-
     {
-      "__inputs": [
-        {
-          "name": "DS_PROMETHEUS",
-          "label": "prometheus",
-          "description": "",
-          "type": "datasource",
-          "pluginId": "prometheus",
-          "pluginName": "Prometheus"
-        }
-      ],
-      "__elements": {},
-      "__requires": [
-        {
-          "type": "panel",
-          "id": "gauge",
-          "name": "Gauge",
-          "version": ""
-        },
-        {
-          "type": "grafana",
-          "id": "grafana",
-          "name": "Grafana",
-          "version": "10.3.1"
-        },
-        {
-          "type": "datasource",
-          "id": "prometheus",
-          "name": "Prometheus",
-          "version": "1.0.0"
-        },
-        {
-          "type": "panel",
-          "id": "stat",
-          "name": "Stat",
-          "version": ""
-        },
-        {
-          "type": "panel",
-          "id": "text",
-          "name": "Text",
-          "version": ""
-        },
-        {
-          "type": "panel",
-          "id": "timeseries",
-          "name": "Time series",
-          "version": ""
-        }
-      ],
       "annotations": {
         "list": [
           {
@@ -70,11 +21,9 @@ data:
       "description": "Metallb dashboard https://metallb.universe.tf/  ",
       "editable": true,
       "fiscalYearStartMonth": 0,
-      "gnetId": 20162,
       "graphTooltip": 0,
-      "id": null,
+      "id": 33,
       "links": [],
-      "liveNow": false,
       "panels": [
         {
           "collapsed": false,
@@ -90,9 +39,9 @@ data:
           "type": "row"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
@@ -110,14 +59,14 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Total pool",
           "type": "text"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
@@ -135,14 +84,14 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "IPv4 pool",
           "type": "text"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
@@ -160,14 +109,14 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "IPv6 pool",
           "type": "text"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -229,7 +178,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "last_over_time(metallb_allocator_addresses_in_use_total{pool=~\"$pool\"}[$__rate_interval]) / last_over_time(metallb_allocator_addresses_total{pool=~\"$pool\"}[$__rate_interval])",
@@ -245,7 +194,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -307,7 +256,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "last_over_time(metallb_allocator_ipv4_addresses_in_use_total{pool=~\"$pool\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv4_addresses_total{pool=~\"$pool\"}[$__rate_interval])",
@@ -323,7 +272,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -385,7 +334,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "last_over_time(metallb_allocator_ipv6_addresses_in_use_total{pool=~\"$pool\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv6_addresses_total{pool=~\"$pool\"}[$__rate_interval])",
@@ -412,9 +361,9 @@ data:
           "type": "row"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
@@ -432,14 +381,14 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Gratuitous sent",
           "type": "text"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
@@ -457,14 +406,14 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Requests received",
           "type": "text"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
@@ -482,14 +431,14 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Responses sent",
           "type": "text"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -572,7 +521,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "rate(metallb_layer2_gratuitous_sent{instance=~\"$l2\"}[$__rate_interval])",
@@ -588,7 +537,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -672,7 +621,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "rate(metallb_layer2_requests_received{instance=~\"$l2\"}[$__rate_interval])",
@@ -688,7 +637,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -772,7 +721,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "rate(metallb_layer2_responses_sent{instance=~\"$l2\"}[$__rate_interval])",
@@ -791,7 +740,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 46
+            "y": 25
           },
           "id": 33,
           "panels": [],
@@ -799,15 +748,15 @@ data:
           "type": "row"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
             "w": 2,
             "x": 0,
-            "y": 47
+            "y": 26
           },
           "id": 6,
           "options": {
@@ -819,20 +768,20 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Config loaded",
           "type": "text"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
             "w": 2,
             "x": 2,
-            "y": 47
+            "y": 26
           },
           "id": 7,
           "options": {
@@ -844,20 +793,20 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Config stale",
           "type": "text"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
             "w": 10,
             "x": 4,
-            "y": 47
+            "y": 26
           },
           "id": 4,
           "options": {
@@ -869,20 +818,20 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Client update",
           "type": "text"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "metallb"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 1,
             "w": 10,
             "x": 14,
-            "y": 47
+            "y": 26
           },
           "id": 5,
           "options": {
@@ -894,14 +843,14 @@ data:
             "content": "",
             "mode": "markdown"
           },
-          "pluginVersion": "10.3.1",
+          "pluginVersion": "11.5.1",
           "title": "Client update errors",
           "type": "text"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -944,7 +893,7 @@ data:
             "h": 7,
             "w": 2,
             "x": 0,
-            "y": 48
+            "y": 27
           },
           "id": 3,
           "options": {
@@ -970,7 +919,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "exemplar": false,
@@ -981,12 +930,13 @@ data:
               "refId": "A"
             }
           ],
+          "title": "",
           "type": "stat"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -1029,7 +979,7 @@ data:
             "h": 7,
             "w": 2,
             "x": 2,
-            "y": 48
+            "y": 27
           },
           "id": 8,
           "options": {
@@ -1055,7 +1005,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "exemplar": false,
@@ -1066,12 +1016,13 @@ data:
               "refId": "A"
             }
           ],
+          "title": "",
           "type": "stat"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -1133,7 +1084,7 @@ data:
             "h": 7,
             "w": 10,
             "x": 4,
-            "y": 48
+            "y": 27
           },
           "id": 2,
           "options": {
@@ -1154,7 +1105,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "rate(metallb_k8s_client_updates_total{instance=~\"$metallb_client\"}[$__rate_interval])",
@@ -1164,12 +1115,13 @@ data:
               "refId": "A"
             }
           ],
+          "title": "",
           "type": "timeseries"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "metallb"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -1231,7 +1183,7 @@ data:
             "h": 7,
             "w": 10,
             "x": 14,
-            "y": 48
+            "y": 27
           },
           "id": 1,
           "options": {
@@ -1252,7 +1204,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "metallb"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "increase(metallb_k8s_client_update_errors_total{instance=~\"$metallb_client\"}[$__rate_interval])",
@@ -1262,22 +1214,32 @@ data:
               "refId": "A"
             }
           ],
+          "title": "",
           "type": "timeseries"
         }
       ],
+      "preload": false,
       "refresh": "",
-      "schemaVersion": 39,
-      "tags": [],
+      "schemaVersion": 40,
+      "tags": [
+        "infrastructure"
+      ],
       "templating": {
         "list": [
           {
-            "current": {},
+            "current": {
+              "text": [
+                "All"
+              ],
+              "value": [
+                "$__all"
+              ]
+            },
             "datasource": {
               "type": "prometheus",
-              "uid": "metallb"
+              "uid": "prometheus"
             },
             "definition": "label_values(metallb_allocator_addresses_in_use_total,pool)",
-            "hide": 0,
             "includeAll": true,
             "multi": true,
             "name": "pool",
@@ -1289,18 +1251,22 @@ data:
             },
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
             "type": "query"
           },
           {
-            "current": {},
+            "current": {
+              "text": [
+                "All"
+              ],
+              "value": [
+                "$__all"
+              ]
+            },
             "datasource": {
               "type": "prometheus",
-              "uid": "metallb"
+              "uid": "prometheus"
             },
             "definition": "label_values(metallb_layer2_gratuitous_sent,instance)",
-            "hide": 0,
             "includeAll": true,
             "label": "l2",
             "multi": true,
@@ -1313,19 +1279,23 @@ data:
             },
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
             "type": "query"
           },
           {
-            "current": {},
+            "current": {
+              "text": [
+                "All"
+              ],
+              "value": [
+                "$__all"
+              ]
+            },
             "datasource": {
               "type": "prometheus",
-              "uid": "metallb"
+              "uid": "prometheus"
             },
             "definition": "label_values(metallb_k8s_client_config_loaded_bool,instance)",
             "description": "",
-            "hide": 0,
             "includeAll": true,
             "label": "metallb client",
             "multi": true,
@@ -1338,7 +1308,6 @@ data:
             },
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
             "sort": 5,
             "type": "query"
           }
@@ -1352,12 +1321,16 @@ data:
       "timezone": "",
       "title": "Metallb",
       "uid": "fb5d0c21-344b-41e1-b342-d611f32b9fe4",
-      "version": 4,
+      "version": 2,
       "weekStart": ""
-    }'
+    }
+
+
 kind: ConfigMap
 metadata:
   labels:
     grafana_dashboard: "1"
+    grafana_dashboard_id: "20162"
+    grafana_dashboard_revision: "6"
   name: metallb-dashboard
   namespace: metallb-system
