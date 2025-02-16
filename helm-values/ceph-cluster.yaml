@@ -22,7 +22,10 @@ cephClusterSpec:
   mgr:
     count: 1
     allowMultiplePerNode: true
-  resources:
+    labels:
+      monitoring:
+        release: kube-prometheus-stack
+    #resources:
     # mgr:
     #   limits:
     #     cpu: "500m"
