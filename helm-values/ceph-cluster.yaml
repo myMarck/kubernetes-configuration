@@ -9,8 +9,8 @@ configOverride: |
   bluefs_buffered_io = "false"
   mon_data_avail_warn = "10"
 monitoring:
-  enabled: false
-  createPrometheusRules: false
+  enabled: true
+  createPrometheusRules: true
   prometheusRule:
     labels:
       release: kube-prometheus-stack
