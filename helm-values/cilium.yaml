@@ -43,10 +43,11 @@ operator:
       enabled: true
       labels:
         release: kube-prometheus-stack
-
 hubble:
   enabled: true
   metrics:
+    dashboards:
+      enabled: true
     enabled:
       - dns:query;ignoreAAAA
       - drop
@@ -58,3 +59,5 @@ hubble:
       enabled: true
       labels:
         release: kube-prometheus-stack
+dashboards:
+  enabled: true
