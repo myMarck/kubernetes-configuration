@@ -8,3 +8,8 @@ resources:
     memory: 128Mi
 monitoring:
   enabled: true
+csi:
+  serviceMonitor:
+    enabled: true
+    labels:
+      release: kube-prometheus-stack
