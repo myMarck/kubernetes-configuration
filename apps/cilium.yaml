@@ -40,7 +40,12 @@ spec:
         - $values/helm-values/cilium.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: main
-      ref: values      
+      ref: values
+    - repoURL: https://github.com/myMarck/kubernetes-configuration.git
+      path: manifests/cilium
+      directory:
+        include: '*.yaml'
+      targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
