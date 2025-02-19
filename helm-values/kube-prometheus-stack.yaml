@@ -42,9 +42,9 @@ kubeEtcd:
     scheme: https
     insecureSkipVerify: false
     serverName: localhost
-    caFile: /etc/prometheus/secrets/etcd-certs/etcd-ca.crt
-    certFile: /etc/prometheus/secrets/etcd-certs/etcd-client.crt
-    keyFile: /etc/prometheus/secrets/etcd-certs/etcd-client-key.key
+    caFile: /etc/prometheus/secrets/etcd-certs/ca.crt
+    certFile: /etc/prometheus/secrets/etcd-certs/server.crt
+    keyFile: /etc/prometheus/secrets/etcd-certs/server.key
 prometheus:
   prometheusSpec:
     secrets:
