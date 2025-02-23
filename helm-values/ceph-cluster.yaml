@@ -18,6 +18,7 @@ cephClusterSpec:
   dataDirHostPath: /var/lib/rook
   dashboard:
     ssl: false
+    urlPrefix: /ceph-dashboard
   mon:
     count: 1
     allowMultiplePerNode: true
@@ -229,8 +230,8 @@ ingress:
       kubernetes.io/ingress.allow-http: "false"
     host:
       name: ceph-dashboard.odumsborg.dk
-      path: "/ceph-dashboard(/|$)(.*)"
-      pathType: ImplementationSpecific
+      path: "/ceph-dashboard/"
+      pathType: Prefix
     tls:
     - hosts:
         - ceph-dashboard.odumsborg.dk
