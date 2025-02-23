@@ -16,6 +16,8 @@ monitoring:
       release: kube-prometheus-stack
 cephClusterSpec:
   dataDirHostPath: /var/lib/rook
+  dashboard:
+    ssl: false
   mon:
     count: 1
     allowMultiplePerNode: true
@@ -217,3 +219,17 @@ cephObjectStores:
       - hosts:
           - objectstore.odumsborg.dk
         secretName: ceph-objectstore-tls
+ingress:
+  dashboard:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+      kubernetes.io/ingress.allow-http: "false"
+    host:
+      name: ceph-dashboard.odumsborg.dk
+      path: "/ceph-dashboard(/|$)(.*)"
+      pathType: Prefix
+    tls:
+    - hosts:
+        - ceph-dashboard.odumsborg.dk
+      secretName: ceph-dashboard-tls
