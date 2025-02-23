@@ -230,7 +230,7 @@ ingress:
       kubernetes.io/ingress.allow-http: "false"
     host:
       name: ceph-dashboard.odumsborg.dk
-      path: "/ceph-dashboard/"
+      path: "/"
       pathType: Prefix
     tls:
     - hosts:
