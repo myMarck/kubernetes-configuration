@@ -9,7 +9,7 @@ spec:
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      targetRevision: '69.3.2'
+      targetRevision: '69.4.1'
       helm:
         valueFiles:
         - $values/helm-values/kube-prometheus-stack.yaml
