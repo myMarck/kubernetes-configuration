@@ -213,8 +213,8 @@ cephObjectStores:
       parameters: {}
     ingress:
       enabled: true
+      ingressClassName: nginx
       annotations:
-        kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
       host:
         name: objectstore.odumsborg.dk
@@ -225,11 +225,10 @@ cephObjectStores:
         secretName: ceph-objectstore-tls
 ingress:
   dashboard:
+    ingressClassName: nginx
     annotations:
       external-dns.alpha.kubernetes.io/hostname: ceph-dashboard.odumsborg.dk
-#      nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-      kubernetes.io/ingress.class: nginx
       kubernetes.io/tls-acme: "true"
       kubernetes.io/ingress.allow-http: "false"
     host:
