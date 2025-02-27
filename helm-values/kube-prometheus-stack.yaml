@@ -21,9 +21,12 @@ grafana:
       url: http://loki-read.loki.svc.cluster.local:3100
       access: proxy
       basicAuth: false
-      version: 1
       orgId: 1
-      editable: true
+      jsonData:
+        httpHeaderName1: X-Scope-OrgID
+      secureJsonData:
+        httpHeaderValue1: "1"
+
 crds:
   enabled: false
 alertmanager:
