@@ -23,6 +23,7 @@ grafana:
       basicAuth: false
       version: 1
       orgId: 1
+      editable: true
 crds:
   enabled: false
 alertmanager:
