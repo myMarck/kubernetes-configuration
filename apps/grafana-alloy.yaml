@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-alloy
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: alloy
+      # https://artifacthub.io/packages/helm/grafana/alloy
+      targetRevision: '0.12.1'
+      helm:
+        valueFiles:
+        - $values/helm-values/grafana-alloy.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/myMarck/kubernetes-configuration.git
+      path: manifests/grafana-alloy
+      directory:
+        include: '*.yaml'
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: alloy
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
