@@ -18,7 +18,7 @@ grafana:
   additionalDataSources:
     - name: loki
       type: loki
-      url: http://loki-read.loki.svc.cluster.local:3100
+      url: http://my-loki.loki.svc.cluster.local:3100
       access: proxy
       basicAuth: false
       orgId: 1
