@@ -47,7 +47,7 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: loki
     server: https://kubernetes.default.svc
-  - namespace: alloy
+  - namespace: k8s-monitoring
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
