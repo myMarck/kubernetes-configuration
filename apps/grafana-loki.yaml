@@ -1,29 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana-alloy
+  name: grafana-loki
   namespace: argocd
 spec:
   project: infrastructure
   sources:
     - repoURL: https://grafana.github.io/helm-charts
-      chart: alloy
-      # https://artifacthub.io/packages/helm/grafana/alloy
-      targetRevision: '0.12.1'
+      chart: loki
+      # https://artifacthub.io/packages/helm/grafana/loki
+      targetRevision: '6.27.0'
       helm:
         valueFiles:
-        - $values/helm-values/grafana-alloy.yaml
+        - $values/helm-values/grafana-loki.yaml
     - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
       targetRevision: HEAD
       ref: values
     - repoURL: https://github.com/myMarck/kubernetes-configuration.git
-      path: manifests/grafana-alloy
+      path: manifests/grafana-loki
       directory:
         include: '*.yaml'
       targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: alloy
+    namespace: loki
   syncPolicy:
     automated:
       allowEmpty: true
