@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-k8s-monitoring
+  namespace: argocd
+spec:
+  project: infrastructure
+  sources:
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: k8s-monitoring
+      # https://artifacthub.io/packages/helm/grafana/k8s-monitoring
+      targetRevision: '2.0.15'
+      helm:
+        valueFiles:
+        - $values/helm-values/grafana-k8s-monitoring.yaml
+    - repoURL: 'https://github.com/myMarck/kubernetes-configuration.git'
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/myMarck/kubernetes-configuration.git
+      path: manifests/grafana-k8s-monitoring
+      directory:
+        include: '*.yaml'
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: k8s-monitoring
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true

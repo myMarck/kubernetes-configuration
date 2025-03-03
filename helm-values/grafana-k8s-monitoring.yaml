@@ -1,0 +1,37 @@
+---
+cluster:
+  name: odumsborg
+
+destinations:
+  - name: Loki
+    type: loki
+    tenantId: 1
+    url: http://grafana-loki-gateway.loki.svc.cluster.local:80/loki/api/v1/push
+
+clusterEvents:
+  enabled: true
+  collector: alloy-logs
+
+nodeLogs:
+  enabled: false
+
+podLogs:
+  enabled: true
+  structuredMetadata:
+    pod: pod  # Set structured metadata "pod" from label "pod"
+
+alloy-singleton:
+  enabled: false
+
+alloy-metrics:
+  enabled: false
+
+alloy-logs:
+  enabled: true
+  # Required when using the Kubernetes API to pod logs
+  alloy:
+    mounts:
+      varlog: true
+
+alloy-profiles:
+  enabled: false
