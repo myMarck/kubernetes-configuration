@@ -16,9 +16,9 @@ grafana:
       kubernetes.io/tls-acme: "true"
       kubernetes.io/ingress.allow-http: "false"
   additionalDataSources:
-    - name: loki
+    - name: Loki
       type: loki
-      url: http://my-loki.loki.svc.cluster.local:3100
+      url: http://loki-headless.loki.svc.cluster.local:3100
       access: proxy
       basicAuth: false
       orgId: 1
