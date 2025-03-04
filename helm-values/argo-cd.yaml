@@ -5,6 +5,11 @@ global:
 configs:
   params:
     server.insecure: true
+  rbac:
+    scopes: '[http://odumsborg.dk/groups, email]'
+    "policy.csv": |
+      g, argocd_admin, role:admin
+    "policy.default": role:readonly
 server:
   ingress:
     enabled: true
