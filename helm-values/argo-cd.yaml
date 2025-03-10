@@ -6,7 +6,7 @@ configs:
   params:
     server.insecure: true
   rbac:
-    scopes: '[http://odumsborg.dk/groups, email]'
+    scopes: '[https://odumsborg.dk/roles, groups]'
     "policy.csv": |
       g, argocd_admin, role:admin
     "policy.default": role:readonly
