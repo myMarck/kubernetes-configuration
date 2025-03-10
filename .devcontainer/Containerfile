@@ -5,17 +5,17 @@ ARG HELM_VERSION="3.17.1"
 # https://dl.k8s.io/release/stable.txt
 ARG KUBECTL_VERSION="1.32.2"
 # https://github.com/argoproj/argo-cd/releases
-ARG ARGOCD_VERSION="2.14.3"
+ARG ARGOCD_VERSION="2.14.4"
 # https://github.com/ahmetb/kubectx/releases
 ARG KUBECTX_VERSION="0.9.5"
 # https://github.com/istio/istio/releases/
-ARG ISTIO_VERSION="1.24.3"
+ARG ISTIO_VERSION="1.25.0"
 # https://github.com/stern/stern/releases
 ARG STERN_VERSION="1.32.0"
 # https://github.com/bitnami-labs/sealed-secrets/releases
 ARG KUBESEAL_VERSION="0.28.0"
 # https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt
-ARG CILIUM_CLI_VERSION="0.18.0"
+ARG CILIUM_CLI_VERSION="0.18.2"
 # https://github.com/kubernetes-sigs/krew/releases
 ARG KREW_VERSION="0.4.4"
 
