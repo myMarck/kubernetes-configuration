@@ -3,6 +3,15 @@ namespaceOverride: monitoring
 fullnameOverride: kube-prometheus-stack
 
 grafana:
+  envValueFrom:
+    GF_AUTH_GENERIC_OAUTH_CLIENT_ID:
+      secretKeyRef:
+        name: grafana-auth0-secret
+        key: client_id
+    GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
+      secretKeyRef:
+        name: grafana-auth0-secret
+        key: client_secret
   grafana.ini:
     auth.generic_oauth:
       enabled: true
