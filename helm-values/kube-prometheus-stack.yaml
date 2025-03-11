@@ -3,6 +3,16 @@ namespaceOverride: monitoring
 fullnameOverride: kube-prometheus-stack
 
 grafana:
+  grafana.ini:
+    auth.generic_oauth:
+      enabled: true
+      name: Auth0
+      allow_sign_up: true
+      scopes: openid profile email offline_access
+      auth_url: "https://dev-p4z7pma474mi3s2m.eu.auth0.com/authorize"
+      token_url: "https://p4z7pma474mi3s2m.eu.auth0.com/oauth/token"
+      api_url: "https://p4z7pma474mi3s2m.eu.auth0.com/userinfo"    
+      callback_url: "https://grafana.odumsborg.dk/login/generic_oauth"
   ingress:
     enabled: true
     hosts:
