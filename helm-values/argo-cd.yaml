@@ -3,8 +3,6 @@ global:
   domain: argocd.odumsborg.dk
 
 configs:
-  secret:
-    createSecret: false
   params:
     server.insecure: true
   rbac:
