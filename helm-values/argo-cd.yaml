@@ -3,6 +3,8 @@ global:
   domain: argocd.odumsborg.dk
 
 configs:
+  secret:
+    createSecret: false
   params:
     server.insecure: true
   rbac:
@@ -10,6 +12,18 @@ configs:
     "policy.csv": |
       g, argocd_admin, role:admin
     "policy.default": role:readonly
+  cm:
+    oidc.config: |
+      name: Auth0
+      issuer: https://dev-p4z7pma474mi3s2m.eu.auth0.com/
+      clientID: $oidc.auth0.clientId
+      clientSecret: $oidc.auth0.clientSecret
+      domain_hint: Username-Password-Authentication
+      requestedScopes:
+      - openid
+      - profile
+      - email
+      - 'https://odumsborg.dk/groups'
 server:
   ingress:
     enabled: true
