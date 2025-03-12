@@ -11,6 +11,7 @@ configs:
       g, argocd_admin, role:admin
     "policy.default": role:readonly
   cm:
+    admin.enabled: false
     oidc.config: |
       name: Auth0
       issuer: https://dev-p4z7pma474mi3s2m.eu.auth0.com/
