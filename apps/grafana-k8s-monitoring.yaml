@@ -9,7 +9,7 @@ spec:
     - repoURL: https://grafana.github.io/helm-charts
       chart: k8s-monitoring
       # https://artifacthub.io/packages/helm/grafana/k8s-monitoring
-      targetRevision: '2.0.16'
+      targetRevision: '2.0.18'
       helm:
         valueFiles:
         - $values/helm-values/grafana-k8s-monitoring.yaml

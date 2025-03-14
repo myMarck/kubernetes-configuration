@@ -9,7 +9,7 @@ spec:
     - repoURL: https://grafana.github.io/helm-charts
       chart: loki
       # https://artifacthub.io/packages/helm/grafana/loki
-      targetRevision: '6.27.0'
+      targetRevision: '6.28.0'
       helm:
         valueFiles:
         - $values/helm-values/grafana-loki.yaml
