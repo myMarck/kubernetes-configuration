@@ -1,11 +1,11 @@
 FROM alpine:latest
 
 # https://github.com/helm/helm/releases
-ARG HELM_VERSION="3.17.1"
+ARG HELM_VERSION="3.17.2"
 # https://dl.k8s.io/release/stable.txt
-ARG KUBECTL_VERSION="1.32.2"
+ARG KUBECTL_VERSION="1.32.3"
 # https://github.com/argoproj/argo-cd/releases
-ARG ARGOCD_VERSION="2.14.4"
+ARG ARGOCD_VERSION="2.14.5"
 # https://github.com/ahmetb/kubectx/releases
 ARG KUBECTX_VERSION="0.9.5"
 # https://github.com/istio/istio/releases/
