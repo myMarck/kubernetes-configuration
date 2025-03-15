@@ -22,6 +22,7 @@ grafana:
       token_url: "https://p4z7pma474mi3s2m.eu.auth0.com/oauth/token"
       api_url: "https://p4z7pma474mi3s2m.eu.auth0.com/userinfo"    
       callback_url: "https://grafana.odumsborg.dk/login/generic_oauth"
+    server:
       root_url: "https://grafana.odumsborg.dk"
   ingress:
     enabled: true
