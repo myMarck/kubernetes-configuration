@@ -13,6 +13,8 @@ grafana:
         name: grafana-auth0
         key: client_secret
   grafana.ini:
+    log:
+      level: debug
     auth.generic_oauth:
       enabled: true
       name: Auth0
@@ -22,8 +24,7 @@ grafana:
       token_url: "https://dev-p4z7pma474mi3s2m.eu.auth0.com/oauth/token"
       api_url: "https://dev-p4z7pma474mi3s2m.eu.auth0.com/userinfo"    
       callback_url: "https://grafana.odumsborg.dk/login/generic_oauth"
-      groups_attribute_path: "https://odumsborg.dk/groups"
-      role_attribute_path: "contains(@, 'grafana_admin') && 'Admin' || 'Viewer'"
+      role_attribute_path: "contains($.\"https://odumsborg.dk/roles\", 'grafana_admin') && 'Admin' || 'Viewer'"
       role_attribute_strict: false
       allow_assign_grafana_admin: true      
     server:
