@@ -13,8 +13,6 @@ grafana:
         name: grafana-auth0
         key: client_secret
   grafana.ini:
-    log:
-      level: debug
     auth.generic_oauth:
       enabled: true
       name: Auth0
