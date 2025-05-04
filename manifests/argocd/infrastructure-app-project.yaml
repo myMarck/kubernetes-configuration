@@ -2,9 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: infrastructure
+  namespace: argocd
   labels:
     argocd.argoproj.io/bootstrap: "true"
-    argocd.argoproj.io/instance: argocd    
+    argocd.argoproj.io/instance: argocd
 spec:
   description: Applications that are part of configuration of all infrasture applications.
   sourceRepos:
